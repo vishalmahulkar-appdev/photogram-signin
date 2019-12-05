@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action(:force_signin, {:only => [:registrationform,:session_form,:session_form,:add_cookie,:create]})
+
   def registrationform
     render({:template => "users/sign_up_form.html.erb"})
   end
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
         redirect_to("/", {:notice => "Sign in success"})
       else
         reset_session
-        redirect_to("/signin", {:alert => "Something went wrong. Try again"})
+        redirect_to("/sign_in", {:alert => "Something went wrong. Try again"})
       end
     else
       redirect_to("/signup", {:alert => "Username does not exist please sign up"})

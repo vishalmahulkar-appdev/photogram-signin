@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # User routes
   
-  match("/signin", { :controller => "users", :action => "session_form", :via => "get" })
+  match("/sign_in", { :controller => "users", :action => "session_form", :via => "get" })
   match("/signup", { :controller => "users", :action => "registrationform", :via => "get" })
   match("/signout", { :controller => "users", :action => "remove_cookies", :via => "get" })
 

@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  skip_before_action(:force_signin, {:only => [:index]})
+
   def index
     @photos = Photo.all
     render({ :template => "photos/all_photos.html.erb"})
