@@ -2,9 +2,17 @@ Rails.application.routes.draw do
   match("/", { :controller => "users", :action => "index", :via => "get" })
 
   # User routes
+  
+  match("/signin", { :controller => "users", :action => "session_form", :via => "get" })
+  match("/signup", { :controller => "users", :action => "registrationform", :via => "get" })
+  match("/signout", { :controller => "users", :action => "remove_cookies", :via => "get" })
 
   # CREATE
   match("/insert_user_record", {:controller => "users", :action => "create", :via => "post"})
+
+  # VERIFY
+  match("/verify_user_record", {:controller => "users", :action => "add_cookie", :via => "post"})
+
 
   # READ
   match("/users", {:controller => "users", :action => "index", :via => "get"})
